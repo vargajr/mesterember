@@ -120,13 +120,13 @@ describe('REST API integration tests', () => {
     };
 
     const response = await request(app)
-      .put('/users')
+      .put(`/users/${id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send(updatePerson);
-    // .expect(202);
+      .send(updatePerson)
+      .expect(200);
     expect(response.type).toBe('application/json');
-    /* expect(response.body.firstName).toBe(updatePerson.firstName);
-    expect(response.body.lastName).toBe(updatePerson.lastName); */
+    expect(response.body.firstName).toBe(updatePerson.firstName);
+    expect(response.body.lastName).toBe(updatePerson.lastName);
   });
 
   /* test('DELETE /person - delete with invalid id', async () => {
