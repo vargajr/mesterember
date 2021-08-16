@@ -1,0 +1,33 @@
+mat-card {
+  max-width: 500px;
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.userEditForm {
+  min-width: 150px;
+  width: 100%;
+}
+
+.userEditor-fill-width {
+  width: 100%;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+.mat-raised-button {
+  padding-left: 4px;
+  padding-right: 4px;
+  min-width: 3rem;
+  &.info {
+    background-color: #17a2b8;
+  }
+  &.danger {
+    background-color: #dc3545;
+  }
+  &.success {
+    background-color: #24ad2f;
+    max-height: 3rem;
+  }
+}

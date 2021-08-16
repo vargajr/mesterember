@@ -1,0 +1,49 @@
+<mat-card class="mat-elevation-z4">
+    <mat-card-title class="mb-2">A szolgáltatás részletes adatai</mat-card-title>
+    <mat-card-content *ngIf="(service$ | async) as service">
+        <h3>Adatbázis id:</h3>
+        <p>{{ service._id }}</p>
+        <h3>A szolgáltató neve:</h3>
+        <p>{{ service.name }}</p>
+        <h3>A szolgáltatás típusa:</h3>
+        <p>{{ service.type }}</p>
+        <h3>Rövid jellemzés::</h3>
+        <p>{{ service.description }}</p>
+        <h3>Elérhetőségek</h3>
+        <h3>Kapcsolattartó:</h3>
+        <p>{{ service.contactPerson }}</p>
+        <h3>Nyitvatartás:</h3>
+        <p>{{ service.available }}</p>
+        <h3>Telefonszám:</h3>
+        <p>{{ service.phone }}</p>
+        <h3>e-Mail cím:</h3>
+        <p>{{ service.email }}</p>
+        <h3>Honlap címe:</h3>
+        <p>{{ service.webpageUrl }}</p>
+        <h3>Telephely, város:</h3>
+        <p>{{ service.city }}</p>
+        <h3>Telephely, utcanév:</h3>
+        <p>{{ service.street }}</p>
+        <h3>Telephely, házszám:</h3>
+        <p>{{ service.houseNumber }}</p>
+        <h3>Jelenleg aktív:</h3>
+        <span *ngIf="service.active">
+            <mat-checkbox [checked]="true" disabled></mat-checkbox>
+        </span>
+        <span *ngIf="!service.active">
+            <mat-checkbox disabled></mat-checkbox>
+        </span>
+        <h3>A feltöltő:</h3>
+        <p>{{ service.recommender }}</p>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="['/', 'services', 'edit', service._id]">Szerkesztés</button>
+            <button
+              mat-raised-button
+              color="secondary"
+              [routerLink]="['/', 'services']">Vissza</button>
+          </div>
+    </mat-card-content>
+</mat-card>

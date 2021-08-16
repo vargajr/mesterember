@@ -1,0 +1,10 @@
+{
+    "database": {
+        "protocol": "mongodb+srv://",
+        "username": "NodeUser",
+        "colon": ":",
+        "password": "zcoV1RIZx6mNfVKe",
+        "at": "@",
+        "host": "cluster0.yofa0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    }
+}

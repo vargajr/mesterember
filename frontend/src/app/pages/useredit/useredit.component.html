@@ -1,0 +1,100 @@
+<mat-card class="mat-elevation-z4">
+    <mat-card-title class="mb-2">A felhasználó adatainak szerkesztése</mat-card-title>
+    <mat-card-content *ngIf="(user$ | async) as user">
+        <form #editorForm="ngForm" (ngSubmit)="onSubmit(editorForm, user)" class="userEditForm">
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="kersztnév"
+                  [(ngModel)]="user.firstName"
+                  name="firstName">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="vezetéknév"
+                  [(ngModel)]="user.lastName"
+                  name="lastName">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="email"
+                  email
+                  matInput
+                  placeholder="e-Mail cím"
+                  [(ngModel)]="user.email"
+                  name="email">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="password"
+                  matInput
+                  placeholder="jelszó"
+                  [(ngModel)]="user.password"
+                  name="password">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: város"
+                  [(ngModel)]="user.city"
+                  name="city">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: utca"
+                  [(ngModel)]="user.street"
+                  name="street">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: házszám"
+                  [(ngModel)]="user.houseNumber"
+                  name="houseNumber">
+            </mat-form-field>
+
+            <mat-slide-toggle
+              class="userEditor-fill-width mb-2"
+              name="active"
+              [(ngModel)]=user.active>
+                Aktív
+            </mat-slide-toggle>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  name="role"
+                  matInput
+                  [matAutocomplete]="auto"
+                  placeholder="szerepkör"
+                  [(ngModel)]="user.role">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option
+                      *ngFor="let r of roles"
+                      [value]="r">
+                      <span>{{ r }}</span>
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <button mat-raised-button color="primary" [disabled]="editorForm.invalid || !editorForm.dirty">Mentés</button>
+              <button mat-raised-button color="secondary" [routerLink]="['/', 'users']">Mégse</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

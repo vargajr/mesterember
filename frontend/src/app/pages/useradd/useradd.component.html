@@ -1,0 +1,105 @@
+<mat-card class="mat-elevation-z4">
+    <mat-card-title class="mb-2">Új felhasználó hozzáadása</mat-card-title>
+    <mat-card-content>
+        <form #editorForm="ngForm" (ngSubmit)="onSubmit(editorForm, editableuser)" class="userEditForm">
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="kersztnév"
+                  [(ngModel)]="editableuser.firstName"
+                  required
+                  name="firstName">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="vezetéknév"
+                  [(ngModel)]="editableuser.lastName"
+                  required
+                  name="lastName">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="email"
+                  email
+                  matInput
+                  placeholder="e-Mail cím"
+                  [(ngModel)]="editableuser.email"
+                  required
+                  name="email">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="password"
+                  matInput
+                  placeholder="jelszó"
+                  [(ngModel)]="editableuser.password"
+                  required
+                  name="password">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: város"
+                  [(ngModel)]="editableuser.city"
+                  required
+                  name="city">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: utca"
+                  [(ngModel)]="editableuser.street"
+                  required
+                  name="street">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: házszám"
+                  [(ngModel)]="editableuser.houseNumber"
+                  required
+                  name="houseNumber">
+            </mat-form-field>
+
+            <mat-slide-toggle
+              class="userEditor-fill-width mb-2"
+              name="active"
+              [(ngModel)]=editableuser.active>
+                Aktív
+            </mat-slide-toggle>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  required
+                  name="role"
+                  matInput
+                  [matAutocomplete]="auto"
+                  placeholder="szerepkör"
+                  [(ngModel)]="editableuser.role">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option
+                      *ngFor="let r of roles"
+                      [value]="r">
+                      <span>{{ r }}</span>
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" [disabled]="editorForm.invalid">Mentés</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>

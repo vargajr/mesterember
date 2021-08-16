@@ -1,0 +1,52 @@
+<div fxLayout="row">
+    <mat-form-field class="tablefilter">
+      <mat-label>field</mat-label>
+      <mat-select [(ngModel)]=currentFilterKey>
+        <mat-option [value]="''">all fields</mat-option>
+        <mat-option *ngFor="let col of displayedColumns" [value]="col">{{ col }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="tablefilter">
+      <mat-label>Filter</mat-label>
+      <input matInput type="text" (keyup)="applyFilter($event)" placeholder="kereső kulcsszó">
+    </mat-form-field>
+    <span class="adduser">Mégse</span>
+      <button mat-raised-button class="danger" [mat-dialog-close]="">
+        <mat-icon>cancel</mat-icon>
+      </button>
+</div>
+
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8">
+
+  <!-- Define columns. -->
+  <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+    <th mat-header-cell *matHeaderCellDef> {{ col | titlecase }} </th>
+    <td mat-cell *matCellDef="let user">
+      <div *ngIf="col !== 'actions'; else actionBlock">{{ user[col] }}</div>
+      <ng-template #actionBlock>
+        <div class="mat-btn-group">
+          <button mat-raised-button class="success" [mat-dialog-close]="user">
+            <mat-icon>assignment_turned_in</mat-icon>
+          </button>
+          <!-- <button mat-raised-button class="danger" (click)="onDelete(user)">
+            <mat-icon>delete</mat-icon>
+          </button> -->
+        </div>
+      </ng-template>
+    </td>
+  </ng-container>
+
+  <!-- Define rows. -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator
+  class="mat-elevation-z8"
+  [pageSizeOptions]="pageSizes"
+  showFirstLastButtons
+></mat-paginator>

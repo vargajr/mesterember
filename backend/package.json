@@ -1,0 +1,42 @@
+{
+  "name": "vizsgaremek-backend",
+  "version": "1.0.0",
+  "description": "backend server for vizsgaremek project",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest --watchAll",
+    "coverage": "jest coverage",
+    "updateSnapshot": "jest --updateSnapshot",
+    "docker:build": "docker build -t vizsgaremek-vargajeno:latest .",
+    "docker-compose:up": "docker-compose up"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.4.0",
+    "jest": "^27.0.6",
+    "jest-mock-req-res": "^1.0.2",
+    "supertest": "^6.1.4"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.24",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "4.17.1",
+    "http-errors": "^1.7.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.5",
+    "mongoose-bcrypt": "^1.9.0",
+    "mongoose-id-validator": "^0.6.0",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^4.1.6",
+    "winston": "^3.3.3",
+    "yamljs": "^0.3.0"
+  }
+}

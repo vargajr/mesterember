@@ -1,0 +1,10 @@
+{
+    "database": {
+        "protocol": "mongodb://",
+        "username": "",
+        "colon": "",
+        "password": "",
+        "at": "",
+        "host": "mongo:27017/myFirstDatabase?retryWrites=true&w=majority"
+    }
+}

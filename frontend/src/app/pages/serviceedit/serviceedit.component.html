@@ -1,0 +1,128 @@
+<mat-card class="mat-elevation-z4">
+    <mat-card-title class="mb-2">A szolgáltatás adatainak szerkesztése</mat-card-title>
+    <mat-card-content *ngIf="(service$ | async) as service">
+        <form #editorForm="ngForm" (ngSubmit)="onSubmit(editorForm, service)" class="userEditForm">
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="A szolgáltató neve"
+                  [(ngModel)]="service.name"
+                  name="name">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="A szolgáltatás típusa"
+                  [(ngModel)]="service.type"
+                  name="type">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <mat-label>A szolgáltatás leírása</mat-label>
+                <textarea
+                  matInput
+                  [(ngModel)]="service.description"
+                  name="description"
+                  ></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Kapcsolattartó személy:"
+                  [(ngModel)]="service.contactPerson"
+                  name="contactPerson">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Nyitvatartás:"
+                  [(ngModel)]="service.available"
+                  name="available">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Telefonszám:"
+                  [(ngModel)]="service.phone"
+                  name="tel">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="email"
+                  email
+                  matInput
+                  placeholder="e-Mail cím"
+                  [(ngModel)]="service.email"
+                  name="email">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Honlap címe:"
+                  [(ngModel)]="service.webpageUrl"
+                  name="webpageUrl">
+            </mat-form-field>
+            
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: város"
+                  [(ngModel)]="service.city"
+                  name="city">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: utca"
+                  [(ngModel)]="service.street"
+                  name="street">
+            </mat-form-field>
+
+            <mat-form-field class="userEditor-fill-width">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="lakcím: házszám"
+                  [(ngModel)]="service.houseNumber"
+                  name="houseNumber">
+            </mat-form-field>
+
+            <mat-slide-toggle
+              class="userEditor-fill-width mb-2"
+              name="active"
+              [(ngModel)]=service.active>
+                Aktív
+            </mat-slide-toggle>
+
+            <div class="userEditor-fill-width mb-2" *ngIf="uploader$ | async as uploader">
+                <span>A feltöltő:</span>
+                &nbsp;&nbsp;{{ uploader.firstName }} {{ uploader.lastName }}&nbsp;&nbsp;
+                <a mat-raised-button class="primary" (click)=onPickUser(uploader)>
+                    <mat-icon>refresh</mat-icon>
+                </a>
+            </div>
+
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <button mat-raised-button color="primary" [disabled]="editorForm.invalid || !editorForm.dirty">Mentés</button>
+              <button mat-raised-button color="secondary" [routerLink]="['/', 'services']">Mégse</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>
