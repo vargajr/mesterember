@@ -23,10 +23,9 @@ module.exports = (ModelClass, serviceObj) => ({
       next(new createError.BadRequest('Invalid data'));
     } else {
       serviceObj.create(req.body)
-        .then((created) => {
-          res.status(201);
-          return res.json(created);
-        })
+        .then((created) => res
+          .status(201)
+          .json(created))
         .catch((err) => next(new createError.InternalServerError(err.message)));
     }
   },

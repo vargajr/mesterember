@@ -4,8 +4,9 @@
   "description": "backend server for vizsgaremek project",
   "main": "src/index.js",
   "scripts": {
+    "build": "cd ../frontend && npm i && ng build && npx copyfiles ./dist/frontend/* ../backend/public/ -f && cd ../backend && npm i && docker-compose up",
     "start": "node src/index.js",
-    "test": "jest --watchAll",
+    "test": "jest",
     "coverage": "jest coverage",
     "updateSnapshot": "jest --updateSnapshot",
     "docker:build": "docker build -t vizsgaremek-vargajeno:latest .",
