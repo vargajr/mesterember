@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const idValidator = require('mongoose-id-validator');
-// const mongooseBcrypt = require('mongoose-bcrypt');
+// const mongooseBcrypt = require('mongoose-bcrypt/index');
 
 const AddressSchema = Schema({
   city: String,
